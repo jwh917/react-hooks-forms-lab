@@ -15,17 +15,16 @@ function ShoppingList({ items, onItemFormSubmit }) {
     setSearchInput(event.target.value);
   }
 
-  // const searchItemsToDisplay = items.filter((item) => {
-  //   if (searchInput === "") return true;
+   const itemsToDisplay = items.filter((item) => {
 
-  //   return item.name === searchInput;
-  // });
+    if(item.category === selectedCategory) {return item.category === selectedCategory}
 
-  const itemsToDisplay = items.filter((item) => {
-    if (selectedCategory === "All" && searchInput === "") return true;
+    else if(selectedCategory === "All" && searchInput === "") {return true}
 
-    return item.category === selectedCategory || item.name.toLowerCase().includes(searchInput.toLowerCase())
+    else if(searchInput != "") {return (item.name.toLowerCase().includes(searchInput.toLowerCase()))}
+
   });
+
 
   return (
     <div className="ShoppingList">
